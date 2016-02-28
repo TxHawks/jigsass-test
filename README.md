@@ -2,6 +2,7 @@
 
 
 # JigSass Test
+
 JigSass Test is a simple helper utility for creating unit tests of Sass modules.  
 It is a thinner version of John Albin's [Sassy Test](https://github.com/JohnAlbin/sassy-test),
 forked out of lack of need of all of the original's functionality and in order to
@@ -19,8 +20,8 @@ JigSass Test will work with any Node.js test runner, like mocha or jasmine.
 ## A quick demo of Mocha + JigSass Test
 
 Example project's root directory:
-```
 
+```
 ┬ my-module/
 |   # You can put your module's Sass files anywhere.
 |   # We use "scss" as an example.
@@ -81,11 +82,11 @@ Then in our test file, test_mymodule.js, we can use `jigsassTest` to simplify ou
 describe('@import "mymodule";', function() {
   describe('@function my-modules-function()', function() {
     it('should test an aspect of this function', function(done) {
-      // JigSass Test's renderFixture() will run a comparison test between the
+      // JigSass Test's testFixture() will run a comparison test between the
       // rendered input.scss and the output.css found in the fixtures
       // sub-directory specified in its first parameter, in this case:
       // test/fixtures/my-modules-function
-      jigsassTest.renderFixture('my-modules-function', {}, function(error, result, expectedOutput) {
+      jigsassTest.testFixture('my-modules-function', {}, function(error, result, expectedOutput) {
         // If we expect the comparison test to succeed, we just need to test
         // that no error occurred and then done(), but we can run other tests
         // here if we desire; both expectedOutput (the contents of output.css)
@@ -96,9 +97,9 @@ describe('@import "mymodule";', function() {
     });
 
     it('should throw an error in this situation', function(done) {
-      // JigSass Test's renderFixture() can also test if your module produces an
+      // JigSass Test's testFixture() can also test if your module produces an
       // intentional error with Sass' @error directive.
-      jigsassTest.renderFixture('my-modules-error', {}, function(error, result, expectedOutput) {
+      jigsassTest.testFixture('my-modules-error', {}, function(error, result, expectedOutput) {
         // If the Sass in test/fixtures/my-modules-error/input.scss triggers an
         // @error in your module, you should expect the error object to exist
         // and to contain the error message from your module.
@@ -109,9 +110,9 @@ describe('@import "mymodule";', function() {
     });
 
     it('should warn in another situation', function(done) {
-      // JigSass Test's renderFixture() can also test if your module produces an
+      // JigSass Test's testFixture() can also test if your module produces an
       // intentional warning message with Sass' @warn directive.
-      jigsassTest.renderFixture('my-modules-warn', {}, function(error, result, expectedOutput) {
+      jigsassTest.testFixture('my-modules-warn', {}, function(error, result, expectedOutput) {
         // If the Sass in test/fixtures/my-modules-warn/input.scss triggers a
         // @warn in your module, you should expect the result object to exist
         // and to contain the warn message from your module.
@@ -136,4 +137,5 @@ After you've cloned this repository, run `npm install` and then you'll be able t
 
 ## Contributors
 
-None but me yet. All are welcome! https://github.com/TxHawks/jigsass-test/graphs/contributors
+Refactored from code forked from
+[John Albin' `sassy-test`](https://github.com/JohnAlbin/sassy-test/)
