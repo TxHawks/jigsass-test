@@ -1,12 +1,12 @@
-# sassy-test API<br><small>version: `2.0.0`</small>
+# jigsass-test API<br><small>version: `2.0.0`</small>
 
-This is the JavaScript API documentation for the sassy-test software. [The code
-for sassy-test](https://github.com/JohnAlbin/sassy-test) is available on GitHub.
+This is the JavaScript API documentation for the jigsass-test software. [The code
+for jigsass-test](https://github.com/TxHawks/jigsass-test) is available on GitHub.
 
-The core sassy-test API can be imported with:
+The core jigsass-test API can be imported with:
 
 ```
-var sassyTest = require('sassy-test');
+var jigsassTest = require('jigsass-test');
 ```
 
-All of the methods of the [sassy-test module are documented](module-sassy-test.html).
+All of the methods of the [jigsass-test module are documented](module-jigsass-test.html).
