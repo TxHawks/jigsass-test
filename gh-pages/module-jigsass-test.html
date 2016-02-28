@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>sassy-test JavaScript API: Module: sassy-test</title>
+    <title>jigsass-test JavaScript API: Module: jigsass-test</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: sassy-test</h1>
+    <h1 class="page-title">Module: jigsass-test</h1>
 
     
 
@@ -38,8 +38,8 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>The core sassy-test API can be imported with:</p>
-<pre class="prettyprint source"><code>var sassyTest = require('sassy-test');</code></pre></div>
+            <div class="description"><p>The core jigsass-test API can be imported with:</p>
+<pre class="prettyprint source"><code>var jigsassTest = require('jigsass-test');</code></pre></div>
         
 
         
@@ -88,7 +88,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sassy-test.js.html">sassy-test.js</a>, <a href="sassy-test.js.html#line8">line 8</a>
+        <a href="jigsass-test.js.html">jigsass-test.js</a>, <a href="jigsass-test.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -145,13 +145,13 @@
 
 
 <div class="description">
-    <p>Configures the paths needed for the sassyTest object.</p>
-<pre class="prettyprint source"><code>var sassyTest = require('sassy-test');
-sassyTest.configurePaths({
+    <p>Override the default paths needed for the jigsassTest object.</p>
+<pre class="prettyprint source"><code>var jigsassTest = require('jigsass-test');
+jigsassTest.configurePaths({
   fixtures: '/my/path/to/fixtures',
   includePaths: ['/my/path/to/library']
-});</code></pre><p>If sassy-test is installed in node_modules and your test fixtures are in
-<code>./test/fixtures</code> (relative to the root of your project), then sassy-test
+});</code></pre><p>If jigsass-test is installed in node_modules and your test fixtures are in
+<code>./test/fixtures</code> (relative to the root of your project), then jigsass-test
 will automatically configure the <code>fixtures</code> path without you having to set
 <code>fixtures</code> with <code>configurePaths()</code>.</p>
 </div>
@@ -247,7 +247,7 @@ will automatically configure the <code>fixtures</code> path without you having t
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sassy-test.js.html">sassy-test.js</a>, <a href="sassy-test.js.html#line46">line 46</a>
+        <a href="jigsass-test.js.html">jigsass-test.js</a>, <a href="jigsass-test.js.html#line48">line 48</a>
     </li></ul></dd>
     
 
@@ -289,14 +289,14 @@ will automatically configure the <code>fixtures</code> path without you having t
 <p>When called without any parameters, this method returns the path to the
 test fixtures directory. If one or more parameters are given, the method
 will append them to the returned path.</p>
-<pre class="prettyprint source"><code>var sassyTest = require('sassy-test');
+<pre class="prettyprint source"><code>var jigsassTest = require('jigsass-test');
 
 // Returns full path to the test fixtures.
-var fixturePath = sassyTest.fixture();
+var fixturePath = jigsassTest.fixture();
 // Returns full path to [fixtures]/sub-folder.
-var fixturePath = sassyTest.fixture('sub-folder');
+var fixturePath = jigsassTest.fixture('sub-folder');
 // Returns full path to [fixtures]/sub-folder/_file.scss.
-var fixturePath = sassyTest.fixture('sub-folder', '_file.scss');</code></pre>
+var fixturePath = jigsassTest.fixture('sub-folder', '_file.scss');</code></pre>
 </div>
 
 
@@ -401,7 +401,7 @@ var fixturePath = sassyTest.fixture('sub-folder', '_file.scss');</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sassy-test.js.html">sassy-test.js</a>, <a href="sassy-test.js.html#line78">line 78</a>
+        <a href="jigsass-test.js.html">jigsass-test.js</a>, <a href="jigsass-test.js.html#line80">line 80</a>
     </li></ul></dd>
     
 
@@ -454,14 +454,14 @@ var fixturePath = sassyTest.fixture('sub-folder', '_file.scss');</code></pre>
 
     
 
-    <h4 class="name" id=".render"><span class="type-signature">(static) </span>render<span class="signature">(options, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".testFixture"><span class="type-signature">(static) </span>testFixture<span class="signature">(fixtureDirectory, options, callback)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Runs node-sass' render() with a light weight wrapper.</p>
+    <p>Renders a test fixture using <code>node-sass</code> and returns the result.</p>
 <p>In addition to running node-sass' render(), this method:</p>
 <ul>
 <li>adds the test fixtures path directory to the includePaths</li>
@@ -469,206 +469,34 @@ var fixturePath = sassyTest.fixture('sub-folder', '_file.scss');</code></pre>
 <li>converts render.css from a buffer to a string</li>
 <li>converts render.map to an object (Note: you will need to configure the
 proper sourcemap options)</li>
-<li>Captures messages generated with <code>@warn</code> and puts them in an array stored
-in render.warn.</li>
-<li>Captures messages generated with <code>@debug</code> and puts them in an array
-stored in render.debug.</li>
+<li>Captures messages generated with <code>@warn</code> and puts them in an array available
+to the callback in <code>render.warn</code>.</li>
+<li>Captures messages generated with <code>@debug</code> and puts them in an array available
+to the callback in <code>render.debug</code>.</li>
 </ul>
-<pre class="prettyprint source"><code>var sassyTest = require('sassy-test');
-
-describe('a test suite', function() {
-  it('should test something', function(done) {
-    var options = {
-      data: '@import &quot;init&quot;; // Imports fixtures/_init.scss.'
-    };
-    sassyTest.render(options, function(error, result) {
-      assert.ifError(error);
-      assert.ok(result.css);
-    });
-    done();
-  });
-});</code></pre>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The options to pass to node-sass' render(). For
-  the full list of options, see the <a href="https://github.com/sass/node-sass#options">node-sass documentation for
-  &quot;options&quot;</a>.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>An asynchronous callback with the signature of
-  <code>function(error, result)</code>. In error conditions, the error argument is
-  populated with the error object. In success conditions, the result object
-  is populated with an object describing the result of the render call. For
-  full details, see the <a href="https://github.com/sass/node-sass#error-object">node-sass documentation for the error and result
-  objects</a>.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sassy-test.js.html">sassy-test.js</a>, <a href="sassy-test.js.html#line126">line 126</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".renderFixture"><span class="type-signature">(static) </span>renderFixture<span class="signature">(fixtureDirectory, options, callback)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Renders the test fixture and returns the result.</p>
-<p>Looks inside the specified folder in test/fixtures, renders the input.scss
-file and reads the output.css file. If no Sass error occurs, it compares
+<p>The <code>testFixture</code> method renders the <code>input.css</code> from the specified folder in
+test/fixtures, and reads the output.css file. If no Sass error occurs, it compares
 the results to the expected output using <code>assert.strictEqual()</code>.</p>
-<p>renderFixture() does not test for errors itself; it requires the callback
-to decide if a Sass error is a test failure or not. Good Sass libraries
-should <code>@error</code> if used incorrectly and sassy-test lets you see these
-errors and assert they were the expected result.</p>
-<pre class="prettyprint source"><code>var sassyTest = require('sassy-test');
+<p><code>testFixture()</code> does not throw on an error, but rather passes it to the callback
+where it can be examined to decide if a Sass error is a test failure or not.</p>
+<p>Good Sass libraries should <code>@error</code> if used incorrectly and jigsass-test lets
+you see these errors and assert they were the expected result.</p>
+<pre class="prettyprint source"><code>var jigsassTest = require('jigsass-test');
 
 describe('a test suite', function() {
   it('should test something', function(done) {
     var options = {
       data: '@import &quot;init&quot;; // Imports fixtures/_init.scss.'
     };
-    sassyTest.renderFixture('sometest', options, function(error, result) {
-      // If there was no error, renderFixture() has already compared
+    jigsassTest.testFixture('sometest', options, function(error, result, expectedOutput) {
+      // If there was no error, testFixture() has already compared
       // the rendered output of fixtures/sometest/input.scss to
       // fixtures/sometest/output.css.
-      assert.ifError(error);
+      if (error) assert.strictEqual(error, 'Some useful `@error` message');
+
+      assert.strictEqual(result.warn[0], 'Some useful `@warn` message');
     });
+
     done();
   });
 });</code></pre>
@@ -820,7 +648,7 @@ describe('a test suite', function() {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sassy-test.js.html">sassy-test.js</a>, <a href="sassy-test.js.html#line211">line 211</a>
+        <a href="jigsass-test.js.html">jigsass-test.js</a>, <a href="jigsass-test.js.html#line147">line 147</a>
     </li></ul></dd>
     
 
@@ -862,13 +690,13 @@ describe('a test suite', function() {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-sassy-test.html">sassy-test</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-jigsass-test.html">jigsass-test</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.3</a> on Tue Nov 17 2015 16:13:32 GMT+0800 (CST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun Feb 28 2016 05:02:50 GMT+0200 (IST)
 </footer>
 
 <script> prettyPrint(); </script>
