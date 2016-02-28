@@ -1,9 +1,12 @@
 {
-  "name": "sassy-test",
-  "version": "2.0.0",
-  "homepage": "https://github.com/JohnAlbin/sassy-test",
-  "author": "John Albin Wilkins <virtually.johnalbin@gmail.com> (http://john.albin.net/)",
-  "description": "A simple helper utility for creating unit tests of Sass modules. Works great with mocha or jasmine.",
+  "name": "jigsass-test",
+  "version": "1.0.0",
+  "homepage": "https://github.com/TxHawks/jigsass-test",
+  "author": {
+    "name": "TxHawks",
+    "email": "tofu.hawks@gmail.com"
+  },
+  "description": "A thinner version of John Albin's `sassy-test`",
   "license": "GPL-2.0",
   "keywords": [
     "node-sass",
@@ -12,22 +15,23 @@
     "jasmine",
     "test",
     "tdd",
-    "bdd"
+    "bdd",
+    "jigsass"
   ],
   "main": "index.js",
   "directories": {
     "test": "test"
   },
   "dependencies": {
-    "node-sass": "^3.3.2"
+    "node-sass": "^3.4.2"
   },
   "devDependencies": {
-    "chai": "^3.4.1",
-    "coveralls": "^2.11.4",
+    "chai": "^3.5.0",
+    "coveralls": "^2.11.8",
     "eslint": "^1.9.0",
-    "istanbul": "^0.4.0",
-    "jsdoc": "^3.3.3",
-    "mocha": "^2.3.4"
+    "istanbul": "^0.4.2",
+    "jsdoc": "^3.4.0",
+    "mocha": "^2.4.5"
   },
   "scripts": {
     "test": "istanbul cover _mocha",
@@ -37,9 +41,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/JohnAlbin/sassy-test.git"
+    "url": "git://github.com/TxHawks/jigsass-test.git"
   },
   "bugs": {
-    "url": "https://github.com/JohnAlbin/sassy-test/issues"
+    "url": "https://github.com/TxHawks/jigsass-test/issues"
   }
 }
