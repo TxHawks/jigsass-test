@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = require('./lib/sassy-test.js');
+module.exports = require('./lib/jigsass-test.js');
